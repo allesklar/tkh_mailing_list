@@ -1,5 +1,6 @@
 require "tkh_mailing_list/version"
 
 module TkhMailingList
-  # Your code goes here...
+  class Engine < ::Rails::Engine
+  end
 end
