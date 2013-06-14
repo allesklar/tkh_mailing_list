@@ -1,0 +1,15 @@
+<%= simple_form_for @detail, :html => { class: 'form-horizontal' } do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :first_name, label: t('activerecord.attributes.users.first_name') %>
+    <%= f.input :last_name, label: t('activerecord.attributes.users.last_name') %>
+    <%= f.input :other_name, label: t('activerecord.attributes.users.other_name'), hint: 'for example, spiritual name' %>
+    <%= f.input :email, label: t('activerecord.attributes.users.email') %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn btn-primary' %>
+  </div>
+
+<% end %>

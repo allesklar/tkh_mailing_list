@@ -1,0 +1,41 @@
+class DetailsController < ApplicationController
+
+  before_filter :authenticate
+  before_filter :authenticate_with_admin
+
+  def show
+    @detail = Detail.find(params[:id])
+    switch_to_admin_layout
+  end
+
+  def new
+    @detail = Detail.new
+    switch_to_admin_layout
+  end
+
+  def edit
+    @detail = Detail.find(params[:id])
+    switch_to_admin_layout
+  end
+
+  def create
+    @detail = Detail.new(params[:detail])
+    @detail.password = 'temporary'
+    @detail.password_confirmation = 'temporary'
+    if @detail.save
+      redirect_to @detail, notice: t('details.create.notice')
+    else
+      render action: "new", warning: t('details.create.warning'), layout: 'admin'
+    end
+  end
+
+  def update
+    @detail = Detail.find(params[:id])
+    if @detail.update_attributes(params[:detail])
+      redirect_to @detail, notice: t('details.update.notice')
+    else
+      render action: "edit", warning: t('details.update.warning'), layout: 'admin'
+    end
+  end
+
+end
