@@ -1,6 +1,9 @@
 # TkhMailingList
 
-TODO: Write a gem description
+This mailing list module work with the tkh_authentication gem. It allows administrators to manage user records. Most of the functionality is yet to come.
+
+Like all tkh gems, it's meant to be used for our projects at Ten Thousand Hours and is a part of the greater tkh\_cms gem. However if some issues or pull requests come in we are ready to extend the development efforts to help as many developers as possible.
+
 
 ## Installation
 
@@ -18,7 +21,8 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To manage a record go to the /users folder.
+
 
 ## Contributing
 
