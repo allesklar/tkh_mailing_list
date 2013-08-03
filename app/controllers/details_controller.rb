@@ -20,6 +20,7 @@ class DetailsController < ApplicationController
 
   def create
     @detail = Detail.new(params[:detail])
+    # this is needed or has_secure_password won't validate the saving of a record
     @detail.password = 'temporary'
     @detail.password_confirmation = 'temporary'
     if @detail.save
