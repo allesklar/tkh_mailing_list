@@ -1,0 +1,12 @@
+de:
+
+  details:
+    create:
+      notice: 'This user has been created.'
+      warning: 'A problem occurred while creating this user.'
+    update:
+      notice: 'This user has been updated.'
+      warning: "A problem occurred while updating this user's record."
+    destroy:
+      notice: 'This user has been deleted.'
+      warning: 'A problem occurred while deleting this user.'

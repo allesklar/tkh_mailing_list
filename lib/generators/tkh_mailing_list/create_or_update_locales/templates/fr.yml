@@ -1,0 +1,12 @@
+fr:
+
+  details:
+    create:
+      notice: 'Un nouvel utilisateur a été ajouté à la base de données.'
+      warning: "Il y a eu un problème qui n'a pas permis d'ajouter cet utilisateur"
+    update:
+      notice: 'Les données de cet utilisateur ont été modifiées'
+      warning: "Il y a eu un problème qui n'a pas permis de modifier les données de cet utilisateur"
+    destroy:
+      notice: "Cet utilisateur n'est plus dans la base de données."
+      warning: "Il y a eu un problème qui n'a pas permis d'éléliminer cet utilisateur"
