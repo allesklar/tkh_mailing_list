@@ -39,4 +39,13 @@ class DetailsController < ApplicationController
     end
   end
 
+  def destroy
+    @detail = Detail.find(params[:id])
+    if @detail.destroy
+      redirect_to users_path, notice: t('details.destroy.notice')
+    else
+      redirect_to users_path, warning: t('details.destroy.warning')
+    end
+  end
+
 end
