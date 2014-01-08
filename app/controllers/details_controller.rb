@@ -19,7 +19,7 @@ class DetailsController < ApplicationController
   end
 
   def create
-    @detail = Detail.new(params[:detail])
+    @detail = Detail.new(detail_params)
     # this is needed or has_secure_password won't validate the saving of a record
     @detail.password = 'temporary'
     @detail.password_confirmation = 'temporary'
@@ -32,7 +32,7 @@ class DetailsController < ApplicationController
 
   def update
     @detail = Detail.find(params[:id])
-    if @detail.update_attributes(params[:detail])
+    if @detail.update_attributes(detail_params)
       redirect_to @detail, notice: t('details.update.notice')
     else
       render action: "edit", warning: t('details.update.warning'), layout: 'admin'
@@ -46,6 +46,13 @@ class DetailsController < ApplicationController
     else
       redirect_to users_path, warning: t('details.destroy.warning')
     end
+  end
+
+  private
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def detail_params
+    params.require(:detail).permit(:admin, :teacher_status)
   end
 
 end
