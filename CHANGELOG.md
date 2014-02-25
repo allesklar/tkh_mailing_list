@@ -1,6 +1,12 @@
 # TKH Mailing List
 
 
+
+## 0.9
+
+* Upgraded gem to Rails 4
+
+
 ## 0.0.2
 
 * Added a rake task file and an add_teacher_status migration generator.
