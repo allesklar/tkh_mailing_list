@@ -2,6 +2,11 @@
 
 
 
+## 0.9.1
+
+* Added permissions to details protected attributes.
+
+
 ## 0.9
 
 * Upgraded gem to Rails 4
