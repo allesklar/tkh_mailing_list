@@ -20,9 +20,6 @@ class DetailsController < ApplicationController
 
   def create
     @detail = Detail.new(detail_params)
-    # this is needed or has_secure_password won't validate the saving of a record
-    @detail.password = 'temporary'
-    @detail.password_confirmation = 'temporary'
     if @detail.save
       redirect_to @detail, notice: t('details.create.notice')
     else
@@ -52,7 +49,7 @@ class DetailsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def detail_params
-    params.require(:detail).permit(:admin, :teacher_status)
+    params.require(:detail).permit(:teacher_status, :first_name, :last_name, :other_name)
   end
 
 end
