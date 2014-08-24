@@ -2,6 +2,11 @@
 
 
 
+## 0.9.2
+
+* Fixed up details user form
+
+
 ## 0.9.1
 
 * Added permissions to details protected attributes.
