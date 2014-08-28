@@ -1,0 +1,37 @@
+<%= render 'tab_admin_menu' %>
+
+<%= will_paginate @members, inner_window: 2 %>
+
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Admin?</th>
+      <th><%= t('actions') %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @members.each do |member| %>
+      <tr>
+        <td><%= link_to member.name, member, title: 'view' %></td>
+        <td><%= member.email %></td>
+        <td>
+          <% unless member.admin? %>
+            <span class="glyphicon glyphicon-remove"></span> <%= link_to t('authentication.enable_admin'), make_admin_user_path(member), class: 'btn btn-xs btn-default', method: :post %>
+          <% else %>
+            <span class="glyphicon glyphicon-ok"></span> <%= link_to t('authentication.disable_admin'), remove_admin_user_path(member), class: 'btn btn-xs btn-primary', method: :post %>
+          <% end -%>
+        </td>
+        <td><%= link_to t('edit'), edit_member_path(member), :class => 'btn btn-xs btn-default' %><%= link_to t('delete'), member, method: :delete, data: { confirm: t('are_you_sure') }, class: 'btn btn-xs btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @members, inner_window: 2 %>
+
+<p><%= link_to 'Add a New Member', new_lesson_path, class: 'btn btn-default' %></p>
+
+<%= render 'shared/admin_sidebar' %>
