@@ -41,9 +41,9 @@ class MembersController < ApplicationController
 
   def destroy
     if @member.destroy
-      redirect_to users_path, notice: t('members.destroy.notice')
+      redirect_to members_path, notice: t('members.destroy.notice')
     else
-      redirect_to users_path, warning: t('members.destroy.warning')
+      redirect_to members_path, warning: t('members.destroy.warning')
     end
   end
 
