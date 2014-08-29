@@ -14,4 +14,19 @@
   <% end %>
 </div>
 
+<table id="profile-attributes">
+  <body>
+    <tr><td class="section" colspan="2"><span class="label label-danger">private information</span></td></tr>
+    <tr><td class="key"><span class="glyphicon glyphicon-envelope"></span> email address</td><td class="value"><%= @profile.email %></td></tr>
+    <%= render 'custom_private_profile_attributes' %>
+    <tr><td class="section" colspan="2"><span class="label label-success">public information</span></td></tr>
+    <tr><td class="key">first name</td><td class="value"><%= @profile.first_name %></td></tr>
+    <tr><td class="key">last name</td><td class="value"><%= @profile.last_name %></td></tr>
+    <tr><td class="key"><%= render 'shared/other_name_label' %></td><td class="value"><%= @profile.other_name %></td></tr>
+    <%= render 'custom_public_profile_attributes' %>
+  </tbody>
+</table>
+
+<p class="text-center"><%= link_to "<span class=\"glyphicon glyphicon-pencil\"></span> change your info".html_safe, edit_profile_path, class: 'btn btn-sm btn-default' %></p>
+
 <%= render'admin_context_menu' %>
