@@ -1,10 +1,21 @@
 <% content_for :meta_title, @member.name %>
 <% content_for :meta_description, "Public profile for #{@member.name}" %>
 
-<h1><%= @member.name %> </h1>
+<div id="profile-title">
+  <% if student.other_name.present? %>
+    <h1>
+      <%= student.other_name %><br />
+      <span class="secondary-name"><%= student.name %></span>
+    </h1>
+  <% else %>
+    <h1><%= student.name %></h1>
+  <% end %>
+</div>
 
-<p>More info goes here.</p>
-
-<p>Trying a dynamic link. <%= link_to "Member named #{@member.name}", @member %> </p>
+<table id="profile-attributes">
+  <tbody>
+    <%= render 'profiles/custom_public_profile_attributes' %>
+  </tbody>
+</table>
 
 <%= render 'admin_context_menu', member: @member %>
