@@ -1,0 +1,39 @@
+<% content_for :meta_title, 'My Profile History' %>
+<% content_for :meta_description, "List of a user's historical activities on the site." %>
+
+<%= render 'tab_menu' %>
+
+<br />
+
+<div id="profile-title">
+  <% if @profile.other_name.present? %>
+    <h1>
+      <%= @profile.other_name %><br />
+      <span class="secondary-name"><%= @profile.name %></span>
+    </h1>
+  <% else %>
+    <h1><%= @profile.name %></h1>
+  <% end %>
+</div>
+
+<br /><br />
+
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th>When?</th>
+      <th>What happened?</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @activities.each do |activity| %>
+      <tr>
+        <td><%= human_date_and_time(activity.created_at) %></td>
+          <td><%= "You #{activity.message}".html_safe %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= render 'admin_context_menu' %>

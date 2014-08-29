@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :members
     # for user to edit and view privately
     resource :profile, only: [ :show, :edit, :update ]
+    get 'profile_history' => 'profiles#history'
 
   end
 end

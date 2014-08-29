@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
 
   before_filter :authenticate
 
-  before_action :set_profile, only: [ :show, :edit, :update ]
+  before_action :set_profile
 
   def show
   end
@@ -16,6 +16,10 @@ class ProfilesController < ApplicationController
     # else
     #   render action: "edit", warning: t('members.update.warning'), layout: 'admin'
     # end
+  end
+
+  def history
+    @activities = doer.activities.by_recent
   end
 
   private
