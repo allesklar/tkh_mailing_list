@@ -2,6 +2,12 @@
 
 
 
+## 0.10
+
+* Added a member resource for admins to update user records. Users are scoped as members.
+* Added a profile resource for users to view and edit their own info.
+
+
 ## 0.9.2
 
 * Fixed up details user form
