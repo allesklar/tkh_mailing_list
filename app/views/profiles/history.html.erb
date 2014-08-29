@@ -3,8 +3,6 @@
 
 <%= render 'tab_menu' %>
 
-<br />
-
 <div id="profile-title">
   <% if @profile.other_name.present? %>
     <h1>
@@ -16,7 +14,7 @@
   <% end %>
 </div>
 
-<br /><br />
+<br />
 
 <table class='table table-striped'>
   <thead>
@@ -27,11 +25,15 @@
   </thead>
 
   <tbody>
-    <% @activities.each do |activity| %>
-      <tr>
-        <td><%= human_date_and_time(activity.created_at) %></td>
-          <td><%= "You #{activity.message}".html_safe %></td>
-      </tr>
+    <% if @activities.any? %>
+      <% @activities.each do |activity| %>
+        <tr>
+          <td><%= human_date_and_time(activity.created_at) %></td>
+            <td><%= "You #{activity.message}".html_safe %></td>
+        </tr>
+      <% end %>
+    <% else # no activities %>
+      <tr><td>You don't have any activities yet.</td></tr>
     <% end %>
   </tbody>
 </table>

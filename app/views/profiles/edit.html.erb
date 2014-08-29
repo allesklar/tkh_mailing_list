@@ -3,6 +3,16 @@
 
 <%= render 'tab_menu' %>
 
-<p>The editing form and functionality go here.</p>
+<%= simple_form_for @profile, url: profile_path do |f| %>
+  <%= f.error_notification %>
+
+    <p>Email: <strong><%= @profile.email %></strong>. Unfortunately, you cannot yet change your email address. This feature is coming soon.</p>
+
+    <%= f.input :first_name, label: t('activerecord.attributes.users.first_name') %>
+    <%= f.input :last_name, label: t('activerecord.attributes.users.last_name') %>
+    <%= f.input :other_name, label: render( 'shared/other_name_label') %>
+
+    <%= f.button :submit, :class => 'btn btn-primary' %>
+<% end %>
 
 <%= render'admin_context_menu' %>

@@ -11,11 +11,11 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    # if @member.update_attributes(member_params)
-    #   redirect_to @member, notice: t('members.update.notice')
-    # else
-    #   render action: "edit", warning: t('members.update.warning'), layout: 'admin'
-    # end
+    if @profile.update_attributes(profile_params)
+      redirect_to profile_path, notice: "<strong>Success!</strong> Your profile was updated.".html_safe
+    else
+      render action: "edit", warning: "<strong>Attention!</strong> A problem occurred while trying to update your profile. Plese try again".html_safe
+    end
   end
 
   def history
