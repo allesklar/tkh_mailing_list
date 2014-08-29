@@ -1,0 +1,5 @@
+<ul class="nav nav-tabs" id="tab-menu">
+  <%= content_tag :li, link_to('<span class="glyphicon glyphicon-user"></span>&nbsp;profile'.html_safe, profile_path), ({ class: 'active' } if controller.action_name.to_s == 'show' ) %>
+  <%= content_tag :li, link_to("<span class=\"glyphicon glyphicon-pencil\"></span>&nbsp;#{t('edit')}".html_safe, edit_profile_path), ({ class: 'active' } if controller.action_name.to_s == 'edit' ) %>
+  <%= content_tag :li, link_to('history', '#'), ({ class: 'active' } if controller.action_name.to_s == 'new' ) %>
+</ul>

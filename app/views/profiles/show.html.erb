@@ -1,6 +1,8 @@
 <% content_for :meta_title, 'My Profile' %>
 <% content_for :meta_description, "My profile administration section for the logged in user" %>
 
+<%= render 'tab_menu' %>
+
 <div id="profile-title">
   <% if @profile.other_name.present? %>
     <h1>
