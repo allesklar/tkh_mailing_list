@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     # for public viewing and admin editing
     resources :members
     # for user to edit and view privately
-    resources :profile
+    resource :profile, only: [ :show, :edit, :update ]
 
   end
 end
