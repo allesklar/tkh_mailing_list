@@ -6,11 +6,20 @@
 <%= simple_form_for @profile, url: profile_path do |f| %>
   <%= f.error_notification %>
 
+    <h1>Private Information</h1>
     <p>Email: <strong><%= @profile.email %></strong>. Unfortunately, you cannot yet change your email address. This feature is coming soon.</p>
+    <%= f.input :allow_newsletter, label: "Allow rare newsletter?&nbsp;&nbsp;".html_safe, hint: 'never more than once a month' %>
+    <%= f.input :allow_daily_digests, label: "Allow daily activity digests?&nbsp;&nbsp;".html_safe, hint: "replies to your comments, etc." %>
 
+    <h1>Public Information</h1>
     <%= f.input :first_name, label: t('activerecord.attributes.users.first_name') %>
     <%= f.input :last_name, label: t('activerecord.attributes.users.last_name') %>
     <%= f.input :other_name, label: render( 'shared/other_name_label') %>
+    <%= f.input :portrait %>
+    <%= f.input :website_url %>
+    <%= f.input :facebook_url %>
+    <%= f.input :twitter_handle %>
+    <%= f.input :google_plus_url, label: "Google+ url" %>
 
     <%= f.button :submit, :class => 'btn btn-primary' %>
 <% end %>

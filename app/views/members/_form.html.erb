@@ -1,10 +1,19 @@
-<%= simple_form_for @member do |f| %>
+<%= simple_form_for @member, :html => { multipart: true } do |f| %>
   <%= f.error_notification %>
 
+    <h2>Private Fields</h2>
+    <%= f.input :email, label: t('activerecord.attributes.users.email'), hint: 'change with caution!!!! the email is used to login.' %>
+    <%= f.input :allow_newsletter %>
+    <%= f.input :allow_daily_digests %>
+
+    <h2>Public Fields</h2>
     <%= f.input :first_name, label: t('activerecord.attributes.users.first_name') %>
     <%= f.input :last_name, label: t('activerecord.attributes.users.last_name') %>
     <%= f.input :other_name, label: t('activerecord.attributes.users.other_name'), hint: 'nickname, spiritual name, etc.' %>
-    <%= f.input :email, label: t('activerecord.attributes.users.email'), hint: 'change with caution!!!! the email is used to login.' %>
+    <%= f.input :website_url %>
+    <%= f.input :facebook_url %>
+    <%= f.input :twitter_handle %>
+    <%= f.input :google_plus_url, label: "Google+ url" %>
 
     <%= f.button :submit, :class => 'btn btn-primary' %>
 <% end %>

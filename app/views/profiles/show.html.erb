@@ -12,18 +12,35 @@
   <% else %>
     <h1><%= @profile.name %></h1>
   <% end %>
+  <% if @profile.portrait.present? %>
+    <p id="profile-portrait"><%= image_tag @profile.portrait_url(:small), title: @profile.name, alt: @profile.name, id: 'profile-portrait' %></p>
+  <% end %>
 </div>
 
 <table id="profile-attributes">
   <tbody>
+
     <tr><td class="section" colspan="2"><span class="label label-danger">private information</span></td></tr>
     <tr><td class="key"><span class="glyphicon glyphicon-envelope"></span> email address</td><td class="value"><%= @profile.email %></td></tr>
+    <tr><td class="key">get rare newsletter</td>
+      <td class="value"><%= @profile.allow_newsletter == true ? "<span class=\"glyphicon glyphicon-ok\"".html_safe : "<span class=\"glyphicon glyphicon-remove\"".html_safe %></td>
+    </tr>
+    <tr>
+      <td class="key">get your daily activity digests</td>
+      <td class="value"><%= @profile.allow_daily_digests == true ?  "<span class=\"glyphicon glyphicon-ok\"".html_safe : "<span class=\"glyphicon glyphicon-remove\"".html_safe %></td>
+    </tr>
     <%= render 'custom_private_profile_attributes' %>
+
     <tr><td class="section" colspan="2"><span class="label label-success">public information</span></td></tr>
     <tr><td class="key">first name</td><td class="value"><%= @profile.first_name %></td></tr>
     <tr><td class="key">last name</td><td class="value"><%= @profile.last_name %></td></tr>
     <tr><td class="key"><%= render 'shared/other_name_label' %></td><td class="value"><%= @profile.other_name %></td></tr>
+    <tr><td class="key">website</td><td class="value"><%= link_to student.website_url, student.website_url %></td></tr>
+    <tr><td class="key">facebook</td><td class="value"><%= link_to student.facebook_url, student.facebook_url %></td></tr>
+    <tr><td class="key">twitter</td><td class="value"><%= link_to student.twitter_handle, "https://twitter.com/#{student.twitter_handle}" %></td></tr>
+    <tr><td class="key">google+</td><td class="value"><%= link_to student.google_plus_url, student.google_plus_url %></td></tr>
     <%= render 'custom_public_profile_attributes' %>
+
   </tbody>
 </table>
 
