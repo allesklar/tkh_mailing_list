@@ -1,47 +1,48 @@
 class PortraitUploader < CarrierWave::Uploader::Base
 
-  # Include RMagick or MiniMagick support:
   include CarrierWave::RMagick
-
-  # Choose what kind of storage to use for this uploader:
   storage :file
-  # storage :fog
-
-  # Override the directory where uploaded files will be stored.
-  # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
     # "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"  --- that was the suggested one
     "system/portraits/#{model.class.to_s.underscore}/#{model.id}"
   end
 
-  # Provide a default URL as a default if there hasn't been a file uploaded:
-  # def default_url
-  #   # For Rails 3.1+ asset pipeline compatibility:
-  #   # asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
-  #
-  #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
-  # end
-
-  # Process files as they are uploaded:
-  # process :scale => [200, 300]
-  #
-  # def scale(width, height)
-  #   # do something
-  # end
-
-  # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process :scale => [50, 50]
-  # end
-  # version :thumbnail do
-  #   process :resize_to_limit => [125, 125]
-  # end
-  version(:thumbnail) { process :resize_to_fill => [125, 125] }
-  version(:small) { process :resize_to_fill => [225, 225] }
-  version(:medium) { process :resize_to_fill => [350, 350] }
-  version(:large) { process :resize_to_fill => [450, 450] }
-  version(:xl) { process :resize_to_fill => [550, 550] }
+  # this is used by jcrop as a source photo
+  # better not modify this code.
+  version :xl do
+    process resize_to_limit: [550, 550]
+  end
+  # these 4 vorsions are cropped square by the user
+  version :thumbnail do
+    process :crop
+    resize_to_fill(125,125)
+  end
+  version :small do
+    process :crop
+    resize_to_fill(225, 225)
+  end
+  version :medium do
+    process :crop
+    resize_to_fill(350, 350)
+  end
+  version :large do
+    process :crop
+    resize_to_fill(450, 450)
+  end
   # version(:xxl) { process :resize_to_limit => [900, 900] }
+
+  def crop
+    if model.crop_x.present?
+      resize_to_limit(550, 550)
+      manipulate! do |img|
+        x = model.crop_x.to_i
+        y = model.crop_y.to_i
+        w = model.crop_w.to_i
+        h = model.crop_h.to_i
+        img.crop!(x, y, w, h)
+      end
+    end
+  end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

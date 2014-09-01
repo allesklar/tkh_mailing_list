@@ -1,0 +1,21 @@
+<% content_for :meta_title, "Crop your profile portrait" %>
+<% content_for :meta_description, "Exact cropping of the profile portrait picture." %>
+
+<h1>Crop Portrait Photo</h1>
+
+<%= form_for @profile, url: profile_path, method: :patch do |f| %>
+  <% %w[x y w h].each do |attribute| %>
+    <%= f.hidden_field "crop_#{attribute}" %>
+  <% end %>
+  <%= f.submit "Crop" %>
+<% end %>
+&nbsp;&nbsp;&nbsp;
+<div style="width:100px; height:100px; overflow:hidden; display: inline-block; margin-bottom: -8px;">
+  <%= image_tag @profile.portrait.url(:xl), id: "preview" %>
+</div>
+
+<br /><br />
+
+<%= image_tag @profile.portrait_url(:xl), id: "cropbox" %>
+
+
