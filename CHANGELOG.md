@@ -2,6 +2,13 @@
 
 
 
+## 0.10.1
+
+* Private profile viewing and editing
+* Public profile view
+* User can add portrait photo to their profile and crop it on the fly
+
+
 ## 0.10
 
 * Added a member resource for admins to update user records. Users are scoped as members.
