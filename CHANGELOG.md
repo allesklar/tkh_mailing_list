@@ -2,6 +2,13 @@
 
 
 
+## 0.10.3
+
+* Added rel-nofollow to public profile links.
+* Removed http and https from profile link anchors.
+* Debugged and improved public profile view and links.
+
+
 ## 0.10.2
 
 * Imported manually the jcrop files so host application does not need to install any gems.
