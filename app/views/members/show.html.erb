@@ -2,26 +2,26 @@
 <% content_for :meta_description, "Public profile for #{@member.name}" %>
 
 <div id="profile-title">
-  <% if student.other_name.present? %>
+  <% if @member.other_name.present? %>
     <h1>
-      <%= student.other_name %><br />
-      <span class="secondary-name"><%= student.name %></span>
+      <%= @member.other_name %><br />
+      <span class="secondary-name"><%= @member.name %></span>
     </h1>
   <% else %>
-    <h1><%= student.name %></h1>
+    <h1><%= @member.name %></h1>
   <% end %>
   <% if Profile.find(@member.id).portrait.present? %>
-    <p id="profile-portrait"><%= image_tag Profile.find(@member.id).portrait_url(:small), title: student.name, alt: student.name, id: 'profile-portrait' %></p>
+    <p id="profile-portrait"><%= image_tag Profile.find(@member.id).portrait_url(:small), title: @member.name, alt: @member.name, id: 'profile-portrait' %></p>
   <% end %>
 </div>
 
 <table id="profile-attributes">
   <tbody>
-    <tr><td class="key">website</td><td class="value"><%= link_to "#{URI(student.website_url).host}#{URI(student.website_url).path}#{URI(student.website_url).query}#{URI(student.website_url).fragment}", student.website_url, rel: 'nofollow' %></td></tr>
-    <tr><td class="key">facebook</td><td class="value"><%= link_to "#{URI(student.facebook_url).host}#{URI(student.facebook_url).path}#{URI(student.facebook_url).query}#{URI(student.facebook_url).fragment}", student.facebook_url, rel: 'nofollow' %></td></tr>
-    <tr><td class="key">twitter</td><td class="value"><%= link_to student.twitter_handle, "https://twitter.com/#{student.twitter_handle}", rel: 'nofollow' %></td></tr>
-    <tr><td class="key">google+</td><td class="value"><%= link_to "#{URI(student.google_plus_url).host}#{URI(student.google_plus_url).path}#{URI(student.google_plus_url).query}#{URI(student.google_plus_url).fragment}", student.google_plus_url, rel: 'nofollow' %></td></tr>
-    <%= render 'profiles/custom_public_profile_attributes' %>
+    <tr><td class="key">website</td><td class="value"><%= link_to abridged_url(@member.website_url), @member.website_url, rel: 'nofollow' %></td></tr>
+    <tr><td class="key">facebook</td><td class="value"><%= link_to abridged_url(@member.facebook_url), @member.facebook_url, rel: 'nofollow' %></td></tr>
+    <tr><td class="key">twitter</td><td class="value"><%= @member.twitter_handle.present? ? link_to( @member.twitter_handle, "https://twitter.com/#{@member.twitter_handle}", rel: 'nofollow' ) : '' %></td></tr>
+    <tr><td class="key">google+</td><td class="value"><%= link_to abridged_url(@member.google_plus_url), @member.google_plus_url, rel: 'nofollow' %></td></tr>
+    <%= render 'profiles/custom_public_profile_attributes', member: @member %>
   </tbody>
 </table>
 
