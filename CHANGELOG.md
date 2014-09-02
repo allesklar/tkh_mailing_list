@@ -2,6 +2,11 @@
 
 
 
+## 0.10.4
+
+* Fixed a bug in private profile
+
+
 ## 0.10.3
 
 * Added rel-nofollow to public profile links.
