@@ -2,6 +2,11 @@
 
 
 
+## 0.10.2
+
+* Imported manually the jcrop files so host application does not need to install any gems.
+
+
 ## 0.10.1
 
 * Private profile viewing and editing
