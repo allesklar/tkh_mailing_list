@@ -17,10 +17,10 @@
 
 <table id="profile-attributes">
   <tbody>
-    <tr><td class="key">website</td><td class="value"><%= link_to student.website_url, student.website_url, rel: 'nofollow' %></td></tr>
-    <tr><td class="key">facebook</td><td class="value"><%= link_to student.facebook_url, student.facebook_url, rel: 'nofollow' %></td></tr>
+    <tr><td class="key">website</td><td class="value"><%= link_to "#{URI(student.website_url).host}#{URI(student.website_url).path}#{URI(student.website_url).query}#{URI(student.website_url).fragment}", student.website_url, rel: 'nofollow' %></td></tr>
+    <tr><td class="key">facebook</td><td class="value"><%= link_to "#{URI(student.facebook_url).host}#{URI(student.facebook_url).path}#{URI(student.facebook_url).query}#{URI(student.facebook_url).fragment}", student.facebook_url, rel: 'nofollow' %></td></tr>
     <tr><td class="key">twitter</td><td class="value"><%= link_to student.twitter_handle, "https://twitter.com/#{student.twitter_handle}", rel: 'nofollow' %></td></tr>
-    <tr><td class="key">google+</td><td class="value"><%= link_to student.google_plus_url, student.google_plus_url, rel: 'nofollow' %></td></tr>
+    <tr><td class="key">google+</td><td class="value"><%= link_to "#{URI(student.google_plus_url).host}#{URI(student.google_plus_url).path}#{URI(student.google_plus_url).query}#{URI(student.google_plus_url).fragment}", student.google_plus_url, rel: 'nofollow' %></td></tr>
     <%= render 'profiles/custom_public_profile_attributes' %>
   </tbody>
 </table>
