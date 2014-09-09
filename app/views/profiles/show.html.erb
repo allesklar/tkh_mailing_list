@@ -35,10 +35,10 @@
     <tr><td class="key">first name</td><td class="value"><%= @profile.first_name %></td></tr>
     <tr><td class="key">last name</td><td class="value"><%= @profile.last_name %></td></tr>
     <tr><td class="key"><%= render 'shared/other_name_label' %></td><td class="value"><%= @profile.other_name %></td></tr>
-    <tr><td class="key">website</td><td class="value"><%= link_to "#{URI(student.website_url).host}#{URI(student.website_url).path}#{URI(student.website_url).query}#{URI(student.website_url).fragment}", student.website_url, rel: 'nofollow' %></td></tr>
-    <tr><td class="key">facebook</td><td class="value"><%= link_to "#{URI(student.facebook_url).host}#{URI(student.facebook_url).path}#{URI(student.facebook_url).query}#{URI(student.facebook_url).fragment}", student.facebook_url, rel: 'nofollow' %></td></tr>
-    <tr><td class="key">twitter</td><td class="value"><%= link_to student.twitter_handle, "https://twitter.com/#{student.twitter_handle}", rel: 'nofollow' %></td></tr>
-    <tr><td class="key">google+</td><td class="value"><%= link_to "#{URI(student.google_plus_url).host}#{URI(student.google_plus_url).path}#{URI(student.google_plus_url).query}#{URI(student.google_plus_url).fragment}", student.google_plus_url, rel: 'nofollow' %></td></tr>
+    <tr><td class="key">website</td><td class="value"><%= link_to "#{URI(student.website_url).host}#{URI(student.website_url).path}#{URI(student.website_url).query}#{URI(student.website_url).fragment}", student.website_url, rel: 'nofollow' unless student.website_url.nil? %></td></tr>
+    <tr><td class="key">facebook</td><td class="value"><%= link_to "#{URI(student.facebook_url).host}#{URI(student.facebook_url).path}#{URI(student.facebook_url).query}#{URI(student.facebook_url).fragment}", student.facebook_url, rel: 'nofollow' unless student.facebook_url.nil? %></td></tr>
+    <tr><td class="key">twitter</td><td class="value"><%= link_to student.twitter_handle, "https://twitter.com/#{student.twitter_handle}", rel: 'nofollow' unless student.twitter_handle.nil? %></td></tr>
+    <tr><td class="key">google+</td><td class="value"><%= link_to "#{URI(student.google_plus_url).host}#{URI(student.google_plus_url).path}#{URI(student.google_plus_url).query}#{URI(student.google_plus_url).fragment}", student.google_plus_url, rel: 'nofollow' unless student.google_plus_url.nil? %></td></tr>
     <%= render 'custom_public_profile_attributes', member: student %>
 
   </tbody>

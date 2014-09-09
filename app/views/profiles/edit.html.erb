@@ -16,10 +16,10 @@
     <%= f.input :last_name, label: t('activerecord.attributes.users.last_name') %>
     <%= f.input :other_name, label: render( 'shared/other_name_label') %>
     <%= f.input :portrait %>
-    <%= f.input :website_url %>
-    <%= f.input :facebook_url %>
-    <%= f.input :twitter_handle %>
-    <%= f.input :google_plus_url, label: "Google+ url" %>
+    <%= f.input :website_url, hint: "DO include http:// or https://" %>
+    <%= f.input :facebook_url, hint: "DO include http:// or https://" %>
+    <%= f.input :twitter_handle, hint: "DO include http:// or https://" %>
+    <%= f.input :google_plus_url, label: "Google+ url", hint: "DO include http:// or https://" %>
 
     <%= f.button :submit, :class => 'btn btn-primary' %>
 <% end %>
