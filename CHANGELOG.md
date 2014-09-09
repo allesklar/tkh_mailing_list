@@ -2,6 +2,11 @@
 
 
 
+## 0.10.5
+
+* Debugged the my profile view when urls are nil.
+
+
 ## 0.10.4
 
 * Fixed a bug in private profile
