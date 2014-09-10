@@ -2,6 +2,11 @@
 
 
 
+## 0.10.6
+
+* Added a deprecation notice to the details recource views. Details has been deprecated in favor of the members resource.
+
+
 ## 0.10.5
 
 * Debugged the my profile view when urls are nil.
