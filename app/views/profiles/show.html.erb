@@ -35,11 +35,11 @@
     <tr><td class="key">first name</td><td class="value"><%= @profile.first_name %></td></tr>
     <tr><td class="key">last name</td><td class="value"><%= @profile.last_name %></td></tr>
     <tr><td class="key"><%= render 'shared/other_name_label' %></td><td class="value"><%= @profile.other_name %></td></tr>
-    <tr><td class="key">website</td><td class="value"><%= link_to "#{URI(student.website_url).host}#{URI(student.website_url).path}#{URI(student.website_url).query}#{URI(student.website_url).fragment}", student.website_url, rel: 'nofollow' unless student.website_url.nil? %></td></tr>
-    <tr><td class="key">facebook</td><td class="value"><%= link_to "#{URI(student.facebook_url).host}#{URI(student.facebook_url).path}#{URI(student.facebook_url).query}#{URI(student.facebook_url).fragment}", student.facebook_url, rel: 'nofollow' unless student.facebook_url.nil? %></td></tr>
-    <tr><td class="key">twitter</td><td class="value"><%= link_to student.twitter_handle, "https://twitter.com/#{student.twitter_handle}", rel: 'nofollow' unless student.twitter_handle.nil? %></td></tr>
-    <tr><td class="key">google+</td><td class="value"><%= link_to "#{URI(student.google_plus_url).host}#{URI(student.google_plus_url).path}#{URI(student.google_plus_url).query}#{URI(student.google_plus_url).fragment}", student.google_plus_url, rel: 'nofollow' unless student.google_plus_url.nil? %></td></tr>
-    <%= render 'custom_public_profile_attributes', member: student %>
+    <tr><td class="key">website</td><td class="value"><%= link_to "#{URI(@profile.website_url).host}#{URI(@profile.website_url).path}#{URI(@profile.website_url).query}#{URI(@profile.website_url).fragment}", @profile.website_url, rel: 'nofollow' unless @profile.website_url.nil? %></td></tr>
+    <tr><td class="key">facebook</td><td class="value"><%= link_to "#{URI(@profile.facebook_url).host}#{URI(@profile.facebook_url).path}#{URI(@profile.facebook_url).query}#{URI(@profile.facebook_url).fragment}", @profile.facebook_url, rel: 'nofollow' unless @profile.facebook_url.nil? %></td></tr>
+    <tr><td class="key">twitter</td><td class="value"><%= link_to @profile.twitter_handle, "https://twitter.com/#{@profile.twitter_handle}", rel: 'nofollow' unless @profile.twitter_handle.nil? %></td></tr>
+    <tr><td class="key">google+</td><td class="value"><%= link_to "#{URI(@profile.google_plus_url).host}#{URI(@profile.google_plus_url).path}#{URI(@profile.google_plus_url).query}#{URI(@profile.google_plus_url).fragment}", @profile.google_plus_url, rel: 'nofollow' unless @profile.google_plus_url.nil? %></td></tr>
+    <%= render 'custom_public_profile_attributes', member: @profile %>
 
   </tbody>
 </table>
@@ -47,3 +47,5 @@
 <p class="text-center"><%= link_to "<span class=\"glyphicon glyphicon-pencil\"></span> change your info".html_safe, edit_profile_path, class: 'btn btn-sm btn-default' %></p>
 
 <%= render'admin_context_menu' %>
+<%# partial in tkh_menus gem or has to be added in host app %>
+<%= render './shared/menus' %>
