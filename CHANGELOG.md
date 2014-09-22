@@ -2,6 +2,12 @@
 
 
 
+## 0.10.7
+
+* Added navigation around show and edit views.
+* Debugged public profile.
+
+
 ## 0.10.6
 
 * Added a deprecation notice to the details recource views. Details has been deprecated in favor of the members resource.
