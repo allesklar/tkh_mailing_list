@@ -15,10 +15,10 @@ class ProfilesController < ApplicationController
       if params[:profile][:portrait].present?
         render :crop  ## Render the view for cropping
       else
-        redirect_to profile_path, notice: "<strong><span class=\"glyphicon glyphicon-ok-sign\"></span>&nbsp;&nbsp;Success!</strong> Your profile was updated.".html_safe
+        redirect_to profile_path, notice: "<strong><span class=\"glyphicon glyphicon-ok-sign\"></span>&nbsp;&nbsp;Success!</strong> Your profile was updated."
       end
     else
-      render action: "edit", warning: "<strong>Attention!</strong> A problem occurred while trying to update your profile. Plese try again".html_safe
+      render action: "edit", warning: "<strong>Attention!</strong> A problem occurred while trying to update your profile. Plese try again."
     end
   end
 
