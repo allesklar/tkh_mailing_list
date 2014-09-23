@@ -2,6 +2,13 @@
 
 
 
+## 0.10.8
+
+* Removed html_safe method from flash messages in profiles update method. Message is rawified in tkh_toolbox gem.
+* Corrected the profile form twitter handle hint.
+* Create activity feed item upon profile updates.
+
+
 ## 0.10.7
 
 * Added navigation around show and edit views.
