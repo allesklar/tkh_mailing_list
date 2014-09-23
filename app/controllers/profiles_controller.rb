@@ -15,6 +15,7 @@ class ProfilesController < ApplicationController
       if params[:profile][:portrait].present?
         render :crop  ## Render the view for cropping
       else
+        Activity.create doer_id: current_user.id, message: "performed a profile edit. See  #{view_context.link_to 'public profile', member_path(@profile)}."
         redirect_to profile_path, notice: "<strong><span class=\"glyphicon glyphicon-ok-sign\"></span>&nbsp;&nbsp;Success!</strong> Your profile was updated."
       end
     else
