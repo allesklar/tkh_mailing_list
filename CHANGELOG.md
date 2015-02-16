@@ -2,6 +2,11 @@
 
 
 
+## 0.10.9.1
+
+* Fixed dependency bug of admin digest email rake task.
+
+
 ## 0.10.9
 
 * Created an admin daily digest email. The rake task can be called from a cron job.

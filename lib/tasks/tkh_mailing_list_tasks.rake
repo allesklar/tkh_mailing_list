@@ -12,7 +12,7 @@ namespace :tkh_mailing_list do
   end
 
   desc "Send to the administrators a email digest of important activities."
-  task :daily_admin_digest do
+  task :daily_admin_digest => :environment do
     Administration.send_daily_digest
   end
 end
