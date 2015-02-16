@@ -1,5 +1,4 @@
 <h1><%= t 'activerecord.models.contacts' %></h1>
-
 <%= render 'tab_admin_menu' %>
 
 <table class='table table-striped'>
@@ -12,7 +11,7 @@
 	    <th><%= t('actions') %></th>
 	  </tr>
 	</thead>
-	
+
 	<tbody>
 		<% @contacts.each do |contact| %>
 		  <tr>
@@ -20,7 +19,7 @@
 				<td><%= link_to contact.sender_email, "mailto:#{contact.sender_email}" %></td>
 		    <td><%= truncate contact.body, length: 85, separator: ' ...' %></td>
 				<td><%= l contact.created_at, :format => :tkh_default %></td>
-		    <td><%= link_to t('view'), contact %></td>
+		    <td><%= link_to "<span class=\"glyphicon glyphicon-eye-open\"></span>&nbsp;#{t('view')}".html_safe, contact, class: 'btn btn-xs btn-default' %></td>
 		  </tr>
 		<% end %>
 	</tbody>
