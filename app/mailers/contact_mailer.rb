@@ -1,5 +1,7 @@
 class ContactMailer < ActionMailer::Base
 
+  # This feature has been suspended. It's meant to be replaced by an admin daily digest.
+
   # default :from => "info@yoga.lu"
 
   # Subject can be set in your I18n file at config/locales/en.yml

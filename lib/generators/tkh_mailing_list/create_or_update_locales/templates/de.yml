@@ -46,3 +46,8 @@ de:
       sender_name: "Absendername:"
       sender_email: "Absender-Email:"
       message: 'Nachricht'
+
+  admin:
+    mailer:
+      daily_digest:
+        subject: "Admin Daily Digest"

@@ -47,3 +47,8 @@ fr:
       sender_name: "Nom de l'auteur :"
       sender_email: "Adresse courriel de l'auteur :"
       message: 'Message :'
+
+  admin:
+    mailer:
+      daily_digest:
+        subject: "Résumé d'activité"

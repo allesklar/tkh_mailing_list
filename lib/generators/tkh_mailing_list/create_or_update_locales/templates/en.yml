@@ -48,3 +48,8 @@ en:
       sender_name: "Sender's name:"
       sender_email: "Sender's email:"
       message: 'Message:'
+
+  admin:
+    mailer:
+      daily_digest:
+        subject: "Admin Daily Digest"
