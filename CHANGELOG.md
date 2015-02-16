@@ -2,6 +2,11 @@
 
 
 
+## 0.10.9
+
+* Created an admin daily digest email. The rake task can be called from a cron job.
+
+
 ## 0.10.8
 
 * Removed html_safe method from flash messages in profiles update method. Message is rawified in tkh_toolbox gem.
