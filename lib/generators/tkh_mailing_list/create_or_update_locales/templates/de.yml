@@ -2,6 +2,9 @@ de:
 
   activerecord:
     models:
+      contact: 'Kontakt'
+      contacts: 'Kontakte'
+    attributes:
       contacts:
         sender_name: "Absender-Name"
         sender_email: 'Absender-Email'
