@@ -1,5 +1,12 @@
 es:
 
+  activerecord:
+    models:
+      contacts:
+        sender_name: "nombre del remitente"
+        sender_email: 'correo electrónico del remitente'
+        body: 'mensaje'
+
   details:
     create:
       notice: 'This user has been created.'
@@ -21,3 +28,18 @@ es:
     destroy:
       notice: 'This user has been deleted.'
       warning: 'A problem occurred while deleting this user.'
+
+  contacts:
+    messages_from_forms: 'mensajes del formulario de contacto'
+    send_message: 'enviar el mensaje'
+    sent: 'Enviado a las'
+    create:
+      did_not_reach: 'Something went wrong. Your message did not reach the intended recipient.'
+      invalid_email: 'Your email address does not seem to be valid!'
+      notice: 'Tu mensaje ha sido enviado.'
+      warning: 'Hubo un problema al enviar su mensaje.'
+    mailer:
+      intro: 'Here is the message sent via the contact form on the web site:'
+      sender_name: "Sender's name:"
+      sender_email: "Sender's email:"
+      message: 'Message:'

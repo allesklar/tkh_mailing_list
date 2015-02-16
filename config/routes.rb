@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
 
+    resources :contacts
+
     # Mailing list records for admin
     resources :details # deprecated. Should disappear soon.
 

@@ -1,5 +1,12 @@
 de:
 
+  activerecord:
+    models:
+      contacts:
+        sender_name: "Absender-Name"
+        sender_email: 'Absender-Email'
+        body: 'Nachricht'
+
   details:
     create:
       notice: 'This user has been created.'
@@ -21,3 +28,18 @@ de:
     destroy:
       notice: 'This user has been deleted.'
       warning: 'A problem occurred while deleting this user.'
+
+  contacts:
+    messages_from_forms: 'Nachrichten vom Kontaktformular'
+    send_message: 'Nachricht senden'
+    sent: 'Gesendet am'
+    create:
+      did_not_reach: 'Etwas ist schief gegangen. Deine Nachricht hat den gewünschten Adressaten nicht erreicht.'
+      invalid_email: 'Deine Emai-Adresse scheint ungültig zu sein!'
+      notice: 'Die Nachricht wurde gesendet.'
+      warning: 'Beim Versenden der Nachricht gab es ein Problem.'
+    mailer:
+      intro: 'Hier ist die Nachricht vom Kontaktformular der Webseite:'
+      sender_name: "Absendername:"
+      sender_email: "Absender-Email:"
+      message: 'Nachricht'

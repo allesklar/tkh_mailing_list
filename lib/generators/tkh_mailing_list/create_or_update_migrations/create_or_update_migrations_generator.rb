@@ -19,6 +19,7 @@ module TkhMailingList
         puts 'creating teacher and profile migrations'
         migration_template "add_teacher_status_to_users.rb", "db/migrate/add_teacher_status_to_users.rb"
         migration_template "add_profile_fields_to_users.rb", "db/migrate/add_profile_fields_to_users.rb"
+        migration_template "create_contacts.rb", "db/migrate/create_contacts.rb"
       end
 
     end

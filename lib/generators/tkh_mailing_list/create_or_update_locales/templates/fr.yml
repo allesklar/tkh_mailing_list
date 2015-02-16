@@ -1,5 +1,13 @@
 fr:
 
+  activerecord:
+    models:
+      contacts:
+        sender_name: "votre nom"
+        sender_email: "votre adresse email"
+        body: 'contenu du message'
+
+
   details:
     create:
       notice: 'Un nouvel utilisateur a été ajouté à la base de données.'
@@ -21,3 +29,18 @@ fr:
     destroy:
       notice: "Cet utilisateur n'est plus dans la base de données."
       warning: "Il y a eu un problème qui n'a pas permis d'éléliminer cet utilisateur"
+
+  contacts:
+    messages_from_forms: 'messages du formulaire de contact'
+    send_message: 'envoyez le message'
+    sent: 'Envoyé le'
+    create:
+      did_not_reach: "Il y a eu un problem. Le message n'a pas été acheminé a sa destination."
+      invalid_email: 'Votre adresse courriel ne semble pas bonne !'
+      notice: 'Merci. Nous avons bien reçu votre message.'
+      warning: "Il y'a eu un probleme en envoyant votre message."
+    mailer:
+      intro: 'Voici le message envoyé par un visiteur avec le formulaire de contact sur le site web :'
+      sender_name: "Nom de l'auteur :"
+      sender_email: "Adresse courriel de l'auteur :"
+      message: 'Message :'
