@@ -15,7 +15,9 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(contact_params)
-    saved = @contact.save
+    # the website form field is invisible to human visitors and works as
+    # a honeypot to spam robots
+    saved = @contact.save unless @contact.website.present?
     # disabling this and replacing it with a daily digest
     # this is to mitigate the pain associated with contact spams
     # sent_email = send_message_to_admin(@contact)
@@ -32,7 +34,7 @@ class ContactsController < ApplicationController
     #   redirect_to :back
     # end
 
-    if saved
+    if saved || @contact.website.present?
       redirect_to root_path, notice: t("contacts.create.notice")
     else
       redirect_to :back, alert: t('contacts.create.did_not_reach')

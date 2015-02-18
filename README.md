@@ -21,7 +21,19 @@ Or install it yourself as:
 
 ## Usage
 
-To manage a record go to the /users folder.
+To manage a record go to the /members folder.
+
+Programmatically, to display a fully working contact form:
+
+    <%= render 'contacts/form' %>
+
+To embed in any page the contact form, any site administrator can use this string:
+
+    tkh_contact_form
+
+You MUST hide a spam prevention field in your CSS:
+
+    div.contact_website { display: none; }
 
 
 ## Contributing

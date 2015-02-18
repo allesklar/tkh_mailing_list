@@ -9,4 +9,6 @@ class Contact < ActiveRecord::Base
   scope :chronologically, -> { order('created_at') }
   scope :by_recent, -> { order('created_at desc') }
 
+  attr_accessor :website
+
 end
