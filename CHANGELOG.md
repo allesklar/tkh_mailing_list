@@ -2,6 +2,11 @@
 
 
 
+## 0.10.10
+
+* Added an invisible field in the contact form to trick spam robots.
+
+
 ## 0.10.9.1
 
 * Fixed dependency bug of admin digest email rake task.
