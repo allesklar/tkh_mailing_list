@@ -5,7 +5,7 @@ This a summary of what happened yesterday on the <%= Setting.first.try(:site_nam
 List of messages from the contact form:
 
 <% @contact_messages.each do |message| %>
-<%= "- from #{message.sender_name} (#{message.sender_email}): #{truncate message.body}" %>
+<%= "- from #{message.sender_name} (#{message.sender_email}): #{truncate message.body, length: 50}" %>
 <% end %>
 
 You can see and manage these messages at: <%= contacts_url %>
