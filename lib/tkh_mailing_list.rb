@@ -3,5 +3,8 @@ require "roadie-rails"
 
 module TkhMailingList
   class Engine < ::Rails::Engine
+    initializer "TkhMailingList precompile hook", :group => :all do |app|
+      app.config.assets.precompile += [ 'emails.css' ]
+    end
   end
 end
