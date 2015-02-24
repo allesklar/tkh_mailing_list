@@ -2,6 +2,12 @@
 
 
 
+## 0.11.1
+
+* Debugged admin mailer layout
+* Emphasized email address in list of contact messages in daily digest admin email.
+
+
 ## 0.11
 
 * Admin daily digest emails are also sent in HTML.
