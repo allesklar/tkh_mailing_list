@@ -2,6 +2,11 @@
 
 
 
+## 0.11.1.1
+
+* Debugging the admin_mailers layout. Added stylesheet to asset pipeline
+
+
 ## 0.11.1
 
 * Debugged admin mailer layout
