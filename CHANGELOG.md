@@ -2,6 +2,11 @@
 
 
 
+## 0.11
+
+* Admin daily digest emails are also sent in HTML.
+
+
 ## 0.10.10
 
 * Added an invisible field in the contact form to trick spam robots.
