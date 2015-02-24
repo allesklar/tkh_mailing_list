@@ -6,7 +6,7 @@
 
 <ul>
   <% @contact_messages.each do |message| %>
-    <li><%= "from #{message.sender_name} (#{message.sender_email}): #{truncate(message.body, length: 50)}" %></li>
+    <li><%= "from #{message.sender_name} <strong>(#{message.sender_email})</strong>: #{truncate(strip_tags(message.body), length: 50)}".html_safe %></li>
   <% end %>
 </ul>
 
