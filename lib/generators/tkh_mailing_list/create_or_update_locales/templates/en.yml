@@ -50,6 +50,7 @@ en:
       message: 'Message:'
 
   admin:
+    site_admin: 'site administration'
     mailer:
       daily_digest:
         subject: "Admin Daily Digest"

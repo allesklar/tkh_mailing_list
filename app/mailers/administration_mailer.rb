@@ -1,4 +1,5 @@
 class AdministrationMailer < ActionMailer::Base
+  include Roadie::Rails::Automatic
 
   default :from => "#{Setting.first.try(:company_name)} <#{Setting.first.try(:contact_email)}>"
 
@@ -10,7 +11,10 @@ class AdministrationMailer < ActionMailer::Base
     reply_to = "#{Setting.first.try(:company_name)} <#{Setting.first.try(:contact_email)}>"
     mail  to: recipient,
           reply_to: reply_to,
-          subject: "#{t('admin.mailer.daily_digest.subject')}- #{l Time.zone.now.to_date}"
+          subject: "#{t('admin.mailer.daily_digest.subject')}- #{l Time.zone.now.to_date}" do |format|
+      format.html { render layout: 'admin_mailers.html.erb' }
+      format.text
+    end
   end
 
 end

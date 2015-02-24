@@ -49,6 +49,7 @@ fr:
       message: 'Message :'
 
   admin:
+    site_admin: 'administration du site'
     mailer:
       daily_digest:
         subject: "Résumé d'activité"

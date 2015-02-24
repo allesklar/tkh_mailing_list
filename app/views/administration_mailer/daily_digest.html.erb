@@ -1,0 +1,15 @@
+<p>Hi <%= @recipient.friendly_name %>,</p>
+
+<p>This a summary of what happened yesterday on the <%= Setting.first.try(:site_name) %> website.</p>
+
+<h2>List of messages from the contact form:</h2>
+
+<ul>
+  <% @contact_messages.each do |message| %>
+    <li><%= "from #{message.sender_name} (#{message.sender_email}): #{truncate(message.body, length: 50)}" %></li>
+  <% end %>
+</ul>
+
+<p>You can see and manage these messages at: <%= contacts_url %>.</p>
+
+<p>You are receiving this email because you are an administrator of the <%= Setting.first.try(:site_name) %> website.</p>

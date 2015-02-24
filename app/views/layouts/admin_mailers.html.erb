@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>">
+
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <%= stylesheet_link_tag 'emails' %>
+  </head>
+
+  <body>
+    <table>
+      <tr>
+        <td id="header">
+          <%= content_tag :h1, t('admin.site_admin'), id: 'header-title' %>
+          <%= image_tag 'admin/admin-logo.jpg'), id: 'admin-logo' %>
+        </td>
+      </tr>
+      <tr>
+        <td><%= yield %></td>
+      </tr>
+    </table>
+  </body>
+
+</html>
