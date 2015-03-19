@@ -2,14 +2,24 @@
 
 <p>This a summary of what happened yesterday on the <%= Setting.first.try(:site_name) %> website.</p>
 
-<h2>List of messages from the contact form:</h2>
+<% unless @pending_comments.blank?  %>
+  <h2><%= t 'comments.digest_intro' %></h2>
+  <ul>
+    <% @pending_comments.each do |comment| %>
+      <li><%= "from #{comment.author.name}: #{truncate(strip_tags(comment.body), length: 50)}" %></li>
+    <% end %>
+  </ul>
+  <p>You can see and manage these comments at: <%= link_to 'pending comments', pending_comments_url %>.</p>
+<% end %>
 
-<ul>
-  <% @contact_messages.each do |message| %>
-    <li><%= "from #{message.sender_name} <strong>(#{message.sender_email})</strong>: #{truncate(strip_tags(message.body), length: 50)}".html_safe %></li>
-  <% end %>
-</ul>
-
-<p>You can see and manage these messages at: <%= contacts_url %>.</p>
+<% unless @contact_messages.blank?  %>
+  <h2>List of messages from the contact form:</h2>
+  <ul>
+    <% @contact_messages.each do |message| %>
+      <li><%= "from #{message.sender_name} (#{message.sender_email}): #{truncate(strip_tags(message.body), length: 50)}" %></li>
+    <% end %>
+  </ul>
+  <p>You can see and manage these messages at: <%= link_to 'contact messages', contacts_url %>.</p>
+<% end %>
 
 <p>You are receiving this email because you are an administrator of the <%= Setting.first.try(:site_name) %> website.</p>

@@ -1,7 +1,16 @@
 Hi <%= @recipient.friendly_name %>,
 
 This a summary of what happened yesterday on the <%= Setting.first.try(:site_name) %> website.
+<% unless @pending_comments.blank? %>
+<%= t 'comments.digest_intro' %>
 
+<% @pending_comments.each do |comment| %>
+<%= "- from #{comment.author.name}: #{truncate comment.body, length: 50}" %>
+<% end %>
+
+You can see and manage these comments at: <%= pending_comments_url %>
+<% end %>
+<% unless @contact_messages.blank? %>
 List of messages from the contact form:
 
 <% @contact_messages.each do |message| %>
@@ -9,5 +18,6 @@ List of messages from the contact form:
 <% end %>
 
 You can see and manage these messages at: <%= contacts_url %>
+<% end %>
 
 You are receiving this email because you are an administrator of the <%= Setting.first.try(:site_name) %> website.

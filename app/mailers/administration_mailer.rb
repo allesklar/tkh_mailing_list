@@ -3,9 +3,10 @@ class AdministrationMailer < ActionMailer::Base
 
   default :from => "#{Setting.first.try(:company_name)} <#{Setting.first.try(:contact_email)}>"
 
-  def daily_digest( admin_user, yesterdays_contact_messages )
+  def daily_digest( admin_user, yesterdays_contact_messages, pending_comments )
     @recipient = admin_user
     @contact_messages = yesterdays_contact_messages
+    @pending_comments = pending_comments
     # FIXME - only the email addresses show up. not the names :-(
     recipient = "#{@recipient.name} <#{@recipient.email}>"
     reply_to = "#{Setting.first.try(:company_name)} <#{Setting.first.try(:contact_email)}>"
