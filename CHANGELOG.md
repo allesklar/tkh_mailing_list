@@ -2,6 +2,11 @@
 
 
 
+## 0.11.2
+
+* The admin daily digest now sends a list of pending comments if any.
+
+
 ## 0.11.1.1
 
 * Debugging the admin_mailers layout. Added stylesheet to asset pipeline

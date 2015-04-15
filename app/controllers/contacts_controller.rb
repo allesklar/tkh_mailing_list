@@ -17,7 +17,8 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     # the website form field is invisible to human visitors and works as
     # a honeypot to spam robots
-    saved = @contact.save unless @contact.website.present?
+    honeypotted = @contact.website.present?
+    saved = @contact.save unless honeypotted
     # disabling this and replacing it with a daily digest
     # this is to mitigate the pain associated with contact spams
     # sent_email = send_message_to_admin(@contact)
@@ -34,7 +35,7 @@ class ContactsController < ApplicationController
     #   redirect_to :back
     # end
 
-    if saved || @contact.website.present?
+    if saved || honeypotted
       redirect_to root_path, notice: t("contacts.create.notice")
     else
       redirect_to :back, alert: t('contacts.create.did_not_reach')
@@ -68,7 +69,7 @@ class ContactsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def contact_params
-    params.require(:contact).permit(:sender_name, :sender_email, :body)
+    params.require(:contact).permit(:sender_name, :sender_email, :body, :website)
   end
 
 
