@@ -2,6 +2,11 @@
 
 
 
+## 0.11.3
+
+* Fixed the spam detection hidden honeypot measure. It was never working :-(
+
+
 ## 0.11.2
 
 * The admin daily digest now sends a list of pending comments if any.
