@@ -2,6 +2,13 @@
 
 
 
+## 0.12
+
+* Implemented the newsletter signup routine outside the login process.
+* Added yesterday's activity feed items to the admin daily digest.
+* Added glyphicons to the members index view and paginate to only 30 records
+
+
 ## 0.11.3
 
 * Fixed the spam detection hidden honeypot measure. It was never working :-(
