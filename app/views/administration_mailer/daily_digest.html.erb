@@ -22,4 +22,21 @@
   <p>You can see and manage these messages at: <%= link_to 'contact messages', contacts_url %>.</p>
 <% end %>
 
+<% unless @yesterdays_activities.blank?  %>
+  <h2>Activity feed:</h2>
+  <ul>
+    <% @yesterdays_activities.each do |activity| %>
+      <li>
+        <% unless activity.doer.blank? %>
+          <td><%= "#{ link_to activity.doer.spiritual_name, member_url(activity.doer) } #{activity.message}".html_safe %></td>
+        <% else # user has been deleted %>
+          <td><%= "now deleted user #{activity.message}".html_safe %></td>
+        <% end %>
+      </li>
+      <li><%= "from #{message.sender_name} (#{message.sender_email}): #{truncate(strip_tags(message.body), length: 50)}" %></li>
+    <% end %>
+  </ul>
+  <p>You can see and manage these messages at: <%= link_to 'contact messages', contacts_url %>.</p>
+<% end %>
+
 <p>You are receiving this email because you are an administrator of the <%= Setting.first.try(:site_name) %> website.</p>
