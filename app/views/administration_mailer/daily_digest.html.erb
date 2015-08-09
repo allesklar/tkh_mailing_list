@@ -28,9 +28,9 @@
     <% @yesterdays_activities.each do |activity| %>
       <li>
         <% unless activity.doer.blank? %>
-          <td><%= "#{ link_to activity.doer.spiritual_name, member_url(id: activity.doer.id) } #{activity.message}".html_safe %></td>
+          <%= "#{ link_to activity.doer.spiritual_name, member_url(id: activity.doer.id) } #{activity.message}".html_safe %>
         <% else # user has been deleted %>
-          <td><%= "now deleted user #{activity.message}".html_safe %></td>
+          <%= "now deleted user #{activity.message}".html_safe %>
         <% end %>
       </li>
     <% end %>
