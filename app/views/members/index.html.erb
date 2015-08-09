@@ -24,7 +24,7 @@
             <span class="glyphicon glyphicon-ok"></span> <%= link_to t('authentication.disable_admin'), remove_admin_user_path(member), class: 'btn btn-xs btn-primary', method: :post %>
           <% end -%>
         </td>
-        <td><%= link_to t('edit'), edit_member_path(member), :class => 'btn btn-xs btn-default' %><%= link_to t('delete'), member, method: :delete, data: { confirm: t('are_you_sure') }, class: 'btn btn-xs btn-danger' %></td>
+        <td><%= link_to "<span class='glyphicon glyphicon-pencil'></span> ".html_safe + t('edit'), edit_member_path(member), :class => 'btn btn-xs btn-default' %><%= link_to "<span class='glyphicon glyphicon-trash'></span> ".html_safe + t('delete'), member, method: :delete, data: { confirm: t('are_you_sure') }, class: 'btn btn-xs btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,6 +32,6 @@
 
 <%= will_paginate @members, inner_window: 2 %>
 
-<p><%= link_to 'Add a New Member', new_member_path, class: 'btn btn-default' %></p>
+<p><%= link_to "<span class='glyphicon glyphicon-plus'></span> Add a New Member".html_safe, new_member_path, class: 'btn btn-default' %></p>
 
 <%= render 'shared/admin_sidebar' %>

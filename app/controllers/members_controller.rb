@@ -6,7 +6,7 @@ class MembersController < ApplicationController
   before_action :set_member, only: [ :show, :edit, :update, :destroy ]
 
   def index
-    @members = Member.by_recent.paginate(:page => params[:page], :per_page => 50)
+    @members = Member.by_recent.paginate(:page => params[:page], :per_page => 30)
     switch_to_admin_layout
   end
 
