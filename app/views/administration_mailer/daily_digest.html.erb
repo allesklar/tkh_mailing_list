@@ -33,7 +33,6 @@
           <td><%= "now deleted user #{activity.message}".html_safe %></td>
         <% end %>
       </li>
-      <li><%= "from #{message.sender_name} (#{message.sender_email}): #{truncate(strip_tags(message.body), length: 50)}" %></li>
     <% end %>
   </ul>
   <p>You can see and manage these messages at: <%= link_to 'contact messages', contacts_url %>.</p>
