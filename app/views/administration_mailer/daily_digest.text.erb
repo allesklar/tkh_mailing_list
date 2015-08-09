@@ -24,7 +24,7 @@ Activity feed:
 
 <% @yesterdays_activities.each do |activity| %>
     <% unless activity.doer.blank? %>
-<%= "- #{ link_to activity.doer.spiritual_name, member_url(activity.doer.id) } #{activity.message}".html_safe %>
+<%= "- #{ link_to activity.doer.spiritual_name, member_url(id: activity.doer.id) } #{activity.message}".html_safe %>
     <% else # user has been deleted %>
 <%= "- now deleted user #{activity.message}".html_safe %>
     <% end %>
