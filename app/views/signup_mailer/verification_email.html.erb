@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>We need to verify your email address</h1>
+
+    <p>You have just requested our email newsletter. Before we add you to the list we need to verify your email address.</p>
+    <p>To protect your privacy, we need you to confirm you are the owner of the <%= @user.email %> address.
+    </p>
+
+    <p>
+      Please visit <%= link_to 'this activation link', email_confirmation_url(token: @user.email_validation_token) %>
+    </p>
+    <p>Thanks for your interest and we look forward to send you the next issue.</p>
+  </body>
+</html>
