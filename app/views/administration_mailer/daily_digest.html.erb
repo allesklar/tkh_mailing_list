@@ -35,7 +35,7 @@
       </li>
     <% end %>
   </ul>
-  <p>You can see and manage these messages at: <%= link_to 'contact messages', contacts_url %>.</p>
+  <p>You can view <%= link_to 'the whole activity feed', activities_url %>.</p>
 <% end %>
 
 <p>You are receiving this email because you are an administrator of the <%= Setting.first.try(:site_name) %> website.</p>
