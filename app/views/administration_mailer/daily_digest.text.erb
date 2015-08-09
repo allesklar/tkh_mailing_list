@@ -19,5 +19,17 @@ List of messages from the contact form:
 
 You can see and manage these messages at: <%= contacts_url %>
 <% end %>
+<% unless @yesterdays_activities.blank?  %>
+Activity feed:
 
+<% @yesterdays_activities.each do |activity| %>
+    <% unless activity.doer.blank? %>
+<%= "- #{ link_to activity.doer.spiritual_name, member_url(activity.doer.id) } #{activity.message}".html_safe %>
+    <% else # user has been deleted %>
+<%= "- now deleted user #{activity.message}".html_safe %>
+    <% end %>
+<% end %>
+
+You can view the activity feed at: <%= activities_url %>
+<% end %>
 You are receiving this email because you are an administrator of the <%= Setting.first.try(:site_name) %> website.
