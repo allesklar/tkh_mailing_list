@@ -22,7 +22,7 @@ You can see and manage these messages at: <%= contacts_url %>
 <% unless @yesterdays_activities.blank?  %>
 Activity feed:
 
-<% @yesterdays_activities.each do |activity| %><% admin_warning = activity.for_admin_anly? ? "Admin Only Item! " : ""  %>
+<% @yesterdays_activities.each do |activity| %><% admin_warning = activity.for_admin_only? ? "Admin Only Item! " : ""  %>
     <% unless activity.doer.blank? %>
 <%= "- #{admin_warning}#{ activity.doer.spiritual_name} #{activity.message}" %>
     <% else # user has been deleted %>
