@@ -25,4 +25,5 @@ Gem::Specification.new do |spec|
   # a spceial fork needs to be used from the host app:
   # gem 'roadie-rails', git: 'https://github.com/tomasc/roadie-rails'
   spec.add_dependency 'roadie-rails'
+  spec.add_dependency 'tkh_activity_feeds'
 end

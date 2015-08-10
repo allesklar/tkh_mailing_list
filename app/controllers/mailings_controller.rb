@@ -53,12 +53,12 @@ class MailingsController < ApplicationController
     if @mailing.testing?
       recipients = User.administrators
     else
-      recipients = Member.validated_emails.allowed_newsletter    #  @production_recipients
+      recipients = Member.validated_emails.allowed_newsletter  # production_recipients
     end
 
     @actual_recipient_count = 0
 
-    for recipient in recipients do
+    recipients.each do |recipient|
       # All recipients need an auth_token to generate unsubscribe link
       unless recipient.auth_token?
         recipient.generate_token(:auth_token)
@@ -71,12 +71,14 @@ class MailingsController < ApplicationController
         begin
           EnewsMailer.newsletter(recipient, @mailing).deliver_now
           @actual_recipient_count += 1
-        rescue
-          # TODO - create a section in the daily digest admin emais reporting errors of all kinds
+        rescue Exception => e
+          AdminMailer.rescued_exceptions(e, "Some exception occurred while trying to send the enewsletter.").deliver_now
         end
+
       else # for invalid or blank emails
-        # TODO - create a section in the daily digest admin emais reporting errors of all kinds
-        # AdminFeedItem.create(:body => "<a href='#{user_path(recipient)}'>#{recipient.full_name}</a> <b>did not receive</b> the email entitled '#{@mailing.title}' because of their blank or invalid email address" )
+        Activity.create(  doer_id: recipient.id,
+                          message: "was not sent the enewsletter entitled '#{@mailing.title}' because their email address appears to be blank or invalid.",
+                          for_admin_only: true   )
       end
     end
 
