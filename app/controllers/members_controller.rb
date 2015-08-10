@@ -48,9 +48,14 @@ class MembersController < ApplicationController
   end
 
   def unsubscribe_from_newsletter
-    @user = User.find_by_auth_token(params[:id])
-    @user.unsubscribe_from_registration_renewal_mailings!
-    AdminFeedItem.create(:body => "<a href='#{user_path(@user)}'>#{@user.full_name}</a> just <b>unsubscribed</b> from the <b>registration renewal mailings</b>")
+    @member = Member.find_by_auth_token(params[:id])
+    @member.unsubscribe_from_newsletter!
+    if Activity.create(    doer_id: @member.id,
+                        message: "just <strong>unsubscribed</strong> from the <strong>enewsletter</strong>."   )
+      redirect_to root_path, notice: "You have been successfully unsubscribed from our newsletter. Bye bye :-)"
+    else
+      redirect_to root_path, warning: "ATTENTION! There was a problem unsubscribing you from the newsletter. We do want to do our best to help you though. Please send an email to #{Setting.first.contact_email}"
+    end
   end
 
   private
