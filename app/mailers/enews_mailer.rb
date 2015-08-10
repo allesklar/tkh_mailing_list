@@ -1,6 +1,6 @@
 class EnewsMailer < ActionMailer::Base
   include Roadie::Rails::Automatic
-  default from: "La Source <info@yoga.lu>"
+  default from: "#{Setting.first.try(:site_name)} <#{Setting.first.contact_email}>"
 
   def newsletter(user, mailing)
     @user = user
