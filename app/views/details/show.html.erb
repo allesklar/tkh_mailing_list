@@ -9,6 +9,6 @@ Email:  <%= @detail.email %><br />
 Admin: <%= @detail.admin? %><br />
 Teacher: <%= @detail.teacher_status %>
 </p>
-<%= link_to t('edit'), edit_detail_path(@detail), class: 'btn btn-primary' %>
+<%= link_to t('edit'), edit_detail_path(@detail), class: 'btn btn-default' %>
 
 <%= render 'shared/admin_sidebar' %>

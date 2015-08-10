@@ -1,0 +1,33 @@
+<%= render 'tab_admin_menu' %>
+
+<%= will_paginate @mailings %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+			<th>Title & Subject</th>
+			<th>Status</th>
+		  <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @mailings.each do |mailing| %>
+			<tr>
+				<td>
+					<strong><%= link_to mailing.title, mailing %></strong><br />
+					Subject: <%= mailing.subject %><br />
+					<%= link_to "<span class='glyphicon glyphicon-envelope'></span> ".html_safe + 'send it now!', sendit_mailing_path(mailing), class: mailing.testing? ? 'btn btn-sm btn-success' : 'btn btn-danger' %>
+				</td>
+				<td><%= mailing.testing? ? "testing :-)" : "<span class='glyphicon glyphicon-alert'></span>".html_safe + " ready to publish. CAREFUL!!!!" %></td>
+				<td><%= link_to "<span class='glyphicon glyphicon-pencil'></span> ".html_safe + 'edit', edit_mailing_path(mailing), :class => 'btn btn-sm btn-default' %><%= link_to "<span class='glyphicon glyphicon-trash'></span> ".html_safe + 'delete', mailing, :data => { :confirm => 'Are you sure?' }, :method => :delete, :class => 'btn btn-sm btn-danger' %><%= link_to "<span class='glyphicon glyphicon-plus'></span> ".html_safe + 'duplicate', duplicate_mailing_path(mailing), class: 'btn btn-sm btn-default', method: :post %></td>
+	  	</tr>
+		<% end %>
+
+		<tr><td colspan="3"><%= link_to "<span class='glyphicon glyphicon-plus'></span>".html_safe + 'new mailing', new_mailing_path, :class => 'btn btn-default' %></td></tr>
+  </tbody>
+</table>
+
+<%= will_paginate @mailings %>
+
+<%= render 'shared/admin_sidebar' %>

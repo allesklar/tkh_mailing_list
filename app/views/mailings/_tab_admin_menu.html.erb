@@ -1,0 +1,8 @@
+<h1>Mailings</h1>
+
+<ul class="nav nav-tabs" id="admin-menu-tab">
+  <%= content_tag :li, link_to('new', new_mailing_path), ({ class: 'active' } if controller.action_name.to_s == 'new' ) %>
+  <%= content_tag :li, link_to('list', mailings_path), ({ class: 'active' } if controller.action_name.to_s == 'index' ) %>
+  <%= content_tag :li, link_to('show', '#'), ({ class: 'active' }) if controller.action_name.to_s == 'show' %>
+  <%= content_tag :li, link_to('edit', '#'), ({ class: 'active' }) if controller.action_name.to_s == 'edit' %>
+</ul>

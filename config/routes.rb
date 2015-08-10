@@ -15,6 +15,13 @@ Rails.application.routes.draw do
     resource :profile, only: [ :show, :edit, :update ]
     get 'profile_history' => 'profiles#history'
 
+    resources :mailings do
+      member do
+        get   :sendit
+        post  :duplicate
+      end
+    end
+
   end
 
 end

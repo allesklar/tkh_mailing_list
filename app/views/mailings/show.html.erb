@@ -1,0 +1,22 @@
+<% content_for :meta_title, @mailing.title %>
+<% content_for :meta_description, @mailing.title + " - " + @mailing.subject %>
+
+<%= render 'tab_admin_menu' %>
+
+<h1><%= @mailing.title %></h1>
+
+<p><strong>Subject:</strong> <%= @mailing.subject %></p>
+
+<hr />
+
+<%= simple_format @mailing.body_text %>
+
+<hr>
+
+<%= raw @mailing.body_html %>
+
+<hr>
+
+<p><%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe + ' edit this mailing', edit_mailing_path(@mailing), :class => 'btn btn-default' %><%= link_to "<span class='glyphicon glyphicon-list'></span>".html_safe + ' list all mailings', mailings_path, :class => 'btn btn-default' %></p>
+
+<%= render 'shared/admin_sidebar' %>

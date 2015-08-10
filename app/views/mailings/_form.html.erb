@@ -1,0 +1,49 @@
+<h1>Admin Section</h1>
+
+<p>Before sending an email, you need to follow each of these steps:</p>
+
+<ol>
+	<li>Create or duplicate mailing</li>
+	<li>Fill out the whole email in as many languages as your site covers.</li>
+	<li>Make a test by sending the email in test mode.</li>
+	<li>Check the test in your admin account.</li>
+	<li>If you find any mistakes, fix them and go back to the step 3. </li>
+	<li>Double check the test</li>
+	<li>Triple check the test</li>
+	<li>When you are sure that all is right, send out the email to the <b>actual</b> list</li>
+</ol>
+
+<%= simple_form_for @mailing, :html => { role: 'form' } do |f| %>
+  <%= f.error_notification %>
+
+	    <%= f.input :title,
+									:placeholder => 'September 2015',
+									:hint => 'This is just for you to recognize your different mailings at a glance',
+									input_html: { size: 55 } %>
+	    <%= f.input :testing, label: "testing mode? Uncheck with care!!!" %>
+			<%= f.input :admin_note,
+									:placeholder => 'Description to remember procedure from mailing to mailing',
+									:hint => 'Just for your convenience too.',
+									input_html: { cols: 55, rows: 3 } %>
+
+										<hr />
+										<h1>Actual Email</h1>
+
+
+	    <%= f.input :subject,
+									:placeholder => 'Very clear subject for recipients',
+									:hint => "Make it good. Put yourself in your subscribers' shoes",
+									input_html: { size: 55 } %>
+	    <%= f.input :body_text,
+									:placeholder => 'Here is the actual body text of the email',
+									:hint => 'No HTML.',
+									input_html: { cols: 55, rows: 15 } %>
+
+	    <%= f.input :body_html,
+									:placeholder => 'Here is the actual HTML formatted body text of the email',
+									hint: "try and resist the temptation of 'styling' your pages here. Use semantic HTML markup",
+									input_html: { :rows => 40, :class => 'ckeditor' } %>
+
+    <%= f.button :submit, class: 'btn btn-primary' %>
+
+<% end %>
