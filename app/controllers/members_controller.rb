@@ -47,6 +47,12 @@ class MembersController < ApplicationController
     end
   end
 
+  def unsubscribe_from_newsletter
+    @user = User.find_by_auth_token(params[:id])
+    @user.unsubscribe_from_registration_renewal_mailings!
+    AdminFeedItem.create(:body => "<a href='#{user_path(@user)}'>#{@user.full_name}</a> just <b>unsubscribed</b> from the <b>registration renewal mailings</b>")
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
