@@ -1,7 +1,7 @@
 class MembersController < ApplicationController
 
-  before_filter :authenticate,            except: :show
-  before_filter :authenticate_with_admin, except: :show
+  before_filter :authenticate,            except: [ :show, :unsubscribe_from_newsletter ]
+  before_filter :authenticate_with_admin, except: [ :show, :unsubscribe_from_newsletter ]
 
   before_action :set_member, only: [ :show, :edit, :update, :destroy ]
 
@@ -50,8 +50,8 @@ class MembersController < ApplicationController
   def unsubscribe_from_newsletter
     @member = Member.find_by_auth_token(params[:id])
     @member.unsubscribe_from_newsletter!
-    if Activity.create(    doer_id: @member.id,
-                        message: "just <strong>unsubscribed</strong> from the <strong>enewsletter</strong>."   )
+    if Activity.create(   doer_id: @member.id,
+                          message: "just <strong>unsubscribed</strong> from the <strong>enewsletter</strong>."   )
       redirect_to root_path, notice: "You have been successfully unsubscribed from our newsletter. Bye bye :-)"
     else
       redirect_to root_path, warning: "ATTENTION! There was a problem unsubscribing you from the newsletter. We do want to do our best to help you though. Please send an email to #{Setting.first.contact_email}"
