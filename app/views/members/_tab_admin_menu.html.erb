@@ -1,4 +1,3 @@
-<h1>Members</h1>
 <ul class="nav nav-tabs" id="admin-menu-tab">
   <%= content_tag :li, link_to(t('new'), new_member_path), ({ class: 'active' } if controller.action_name.to_s == 'new' ) %>
   <%= content_tag :li, link_to(t('list'), members_path), ({ class: 'active' } if controller.action_name.to_s == 'index' ) %>
