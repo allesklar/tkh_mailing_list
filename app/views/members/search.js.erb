@@ -1,0 +1,1 @@
+$('table#member-list tbody').html("<%= escape_javascript(render(partial: 'search_results', members: @members)) %>").hide().show("highlight", { color: "#772953" }, 1500);

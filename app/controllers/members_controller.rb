@@ -47,6 +47,10 @@ class MembersController < ApplicationController
     end
   end
 
+  def search
+    @members = Member.where("LOWER(first_name) LIKE ? OR LOWER(last_name) LIKE ? OR LOWER(other_name) LIKE ? OR LOWER(email) LIKE ?", "%#{params[:query].downcase}%", "%#{params[:query].downcase}%", "%#{params[:query].downcase}%", "%#{params[:query].downcase}%").by_recent.limit(25)
+  end
+
   def unsubscribe_from_newsletter
     @member = Member.find_by_auth_token(params[:id])
     @member.unsubscribe_from_newsletter!

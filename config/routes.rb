@@ -14,6 +14,9 @@ Rails.application.routes.draw do
       member do
         get :unsubscribe_from_newsletter
       end
+      collection do
+        post :search
+      end
     end
     # for user to edit and view privately
     resource :profile, only: [ :show, :edit, :update ]
