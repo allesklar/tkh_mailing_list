@@ -2,7 +2,7 @@
 
 <div class="panel panel-default">
   <div class="panel-body">
-    Total newsletter subscribers: <strong><%= Member.allowed_newsletter.count %></strong>
+    Total newsletter subscribers: <strong><%= Member.validated_emails.allowed_newsletter.count %></strong>
   </div>
 </div>
 
