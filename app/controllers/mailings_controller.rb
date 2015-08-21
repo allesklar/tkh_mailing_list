@@ -90,7 +90,7 @@ class MailingsController < ApplicationController
     else
       # TODO - notify the admins somehow
      # AdminFeedItem.create(:body => "The bulk email entitled '#{@mailing.title}' <b>has been sent to #{@actual_recipient_count} students</b>. The last email left at #{l Time.now, format: :just_time}. The mailing was sent for real - that was not a test!")
-     redirect_to mailins_path, notice: 'The mailing is being sent to your subscribers.'
+     redirect_to mailings_path, notice: 'The mailing is being sent to your subscribers.'
     end
   end
 
