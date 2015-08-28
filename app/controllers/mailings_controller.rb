@@ -52,7 +52,7 @@ class MailingsController < ApplicationController
 
     if @mailing.testing?
       recipients = User.administrators
-    else
+    else # prepare the actual list
       recipients = Member.validated_emails.allowed_newsletter  # production_recipients
     end
 
@@ -84,12 +84,11 @@ class MailingsController < ApplicationController
 
     # After the mailing has been sent, finish up with the following
     if @mailing.testing?
-      # TODO - notify the admins somehow
-      # AdminFeedItem.create(:body => "The bulk email entitled '#{@mailing.title}' <b>us sent to #{@actual_recipient_count} students</b>. The last email left at #{l Time.now, format: :just_time}. The mailing is still in test mode")
       redirect_to mailings_path, notice: 'The test mailing is being sent. Check it carefully, fix mistakes, resend. Repeat as many times as needed.'
     else
-      # TODO - notify the admins somehow
-     # AdminFeedItem.create(:body => "The bulk email entitled '#{@mailing.title}' <b>has been sent to #{@actual_recipient_count} students</b>. The last email left at #{l Time.now, format: :just_time}. The mailing was sent for real - that was not a test!")
+      # TODO - notify the admins somehow -- send email upon completion
+     Activity.create( doer_id: current_user.id,
+                      message: " just sent the enewsletter entitled '#{@mailing.title}' to #{Member.validated_emails.allowed_newsletter.count} subscribers."  )
      redirect_to mailings_path, notice: 'The mailing is being sent to your subscribers.'
     end
   end

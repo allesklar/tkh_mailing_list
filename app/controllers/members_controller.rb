@@ -3,7 +3,7 @@ class MembersController < ApplicationController
   before_filter :authenticate,            except: [ :show, :unsubscribe_from_newsletter ]
   before_filter :authenticate_with_admin, except: [ :show, :unsubscribe_from_newsletter ]
 
-  before_action :set_member, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_member, only: [ :show, :edit, :update, :destroy, :validate_email ]
 
   def index
     @members = Member.by_recent.paginate(:page => params[:page], :per_page => 30)
@@ -60,6 +60,12 @@ class MembersController < ApplicationController
     else
       redirect_to root_path, warning: "ATTENTION! There was a problem unsubscribing you from the newsletter. We do want to do our best to help you though. Please send an email to #{Setting.first.contact_email}"
     end
+  end
+
+  def validate_email
+    @member.email_validated = true
+    @member.save
+    redirect_to members_path, notice: "Successfully validated the #{@member.email} email address."
   end
 
   private

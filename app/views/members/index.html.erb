@@ -28,7 +28,13 @@
     <% @members.each do |member| %>
       <tr>
         <td><%= link_to member.name, member, title: 'view' %></td>
-        <td><%= member.email %></td>
+        <td>
+          <%= member.email %>
+          <% unless member.email_validated? %>
+            <span class="glyphicon glyphicon-remove"></span>
+            <%= link_to "<span class='glyphicon glyphicon-ok'></span> validate!!! <span class='glyphicon glyphicon-warning-sign'></span>".html_safe, validate_email_member_path(member), method: 'post', class: 'btn btn-xs btn-default' %>
+          <% end %>
+        </td>
         <td>
           <% unless member.admin? %>
             <span class="glyphicon glyphicon-remove"></span> <%= link_to t('authentication.enable_admin'), make_admin_user_path(member), class: 'btn btn-xs btn-default', method: :post %>

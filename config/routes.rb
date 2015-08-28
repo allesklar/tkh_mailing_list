@@ -12,7 +12,8 @@ Rails.application.routes.draw do
     # for public viewing and admin editing
     resources :members do
       member do
-        get :unsubscribe_from_newsletter
+        get   :unsubscribe_from_newsletter
+        post  :validate_email
       end
       collection do
         post :search
