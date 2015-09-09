@@ -29,7 +29,7 @@
       <li>
         <%= "<strong><span class='glyphicon glyphicon-alert'></span> Admin Only Item!</strong> ".html_safe if activity.for_admin_only? %>
         <% unless activity.doer.blank? %>
-          <%= "#{ link_to activity.doer.spiritual_name, member_url(id: activity.doer.id) } #{activity.message}".html_safe %>
+          <%= "#{ link_to (activity.doer.name.present? ? activity.doer.name : (activity.doer.email || 'anonymous')), member_url(id: activity.doer.id) } #{activity.message}".html_safe %>
         <% else # user has been deleted %>
           <%= "now deleted user #{activity.message}".html_safe %>
         <% end %>
