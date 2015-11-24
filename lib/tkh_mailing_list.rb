@@ -1,6 +1,8 @@
 require "tkh_mailing_list/version"
 require "roadie-rails"
 require "tkh_activity_feeds"
+require "carrierwave"
+require "rmagick"
 
 module TkhMailingList
   class Engine < ::Rails::Engine

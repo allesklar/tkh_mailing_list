@@ -26,4 +26,6 @@ Gem::Specification.new do |spec|
   # gem 'roadie-rails', git: 'https://github.com/tomasc/roadie-rails'
   spec.add_dependency 'roadie-rails'
   spec.add_dependency 'tkh_activity_feeds'
+  spec.add_dependency 'carrierwave'
+  spec.add_dependency 'rmagick' # needed for carrierwave resizing
 end
