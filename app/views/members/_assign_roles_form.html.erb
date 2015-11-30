@@ -1,0 +1,22 @@
+<h2>Roles</h2>
+
+<%= form_tag '/assign_powers' do |f| %>
+
+  <%= hidden_field_tag :user_id, @member.id %>
+
+  <ul class="list-group">
+    <% Role.alphabetically.each do |role| %>
+      <li class="list-group-item">
+        <% if @member.has_role? role.name %>
+        <span class='glyphicon glyphicon-ok'></span>  <strong><%= role.name %></strong>
+                  <%= link_to "<span class='glyphicon glyphicon-trash'></span> remove".html_safe, remove_role_member_path(role_id: role.id), method: :post, class: 'btn btn-xs btn-danger' %>
+
+      <% else %>
+        <%= role.name %>
+          <%= link_to "<span class='glyphicon glyphicon-plus'></span> add".html_safe, add_role_member_path(role_id: role.id), method: :post, class: 'btn btn-xs btn-success' %>
+      <% end %>
+       </li>
+    <% end %>
+  </ul>
+
+<% end %>
