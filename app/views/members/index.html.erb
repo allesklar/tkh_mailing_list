@@ -19,7 +19,7 @@
     <tr>
       <th>Name</th>
       <th>Email</th>
-      <th>Admin?</th>
+      <th>Roles</th>
       <th><%= t('actions') %></th>
     </tr>
   </thead>
@@ -36,12 +36,10 @@
           <% end %>
         </td>
         <td>
-          <% unless member.admin? %>
-            <span class="glyphicon glyphicon-remove"></span> <%= link_to t('authentication.enable_admin'), make_admin_user_path(member), class: 'btn btn-xs btn-default', method: :post %>
-          <% else %>
-            <span class="glyphicon glyphicon-ok"></span> <%= link_to t('authentication.disable_admin'), remove_admin_user_path(member), class: 'btn btn-xs btn-primary', method: :post %>
-          <% end -%>
-        </td>
+          <% member.role_names.each do |name| %>
+            <%="<span class='label label-info'>#{name}</span>".html_safe %>
+          <% end %>
+          </td>
         <td><%= link_to "<span class='glyphicon glyphicon-pencil'></span> ".html_safe + t('edit'), edit_member_path(member), :class => 'btn btn-xs btn-default' %><%= link_to "<span class='glyphicon glyphicon-trash'></span> ".html_safe + t('delete'), member, method: :delete, data: { confirm: t('are_you_sure') }, class: 'btn btn-xs btn-danger' %></td>
       </tr>
     <% end %>

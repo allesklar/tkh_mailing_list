@@ -16,6 +16,8 @@ Rails.application.routes.draw do
         member do
           get   :unsubscribe_from_newsletter
           post  :validate_email
+          post  :add_role
+          post  :remove_role
         end
         collection do
           post :search
@@ -30,6 +32,7 @@ Rails.application.routes.draw do
           post  :duplicate
         end
       end
+      post '/assign_powers' => 'powers#index'
     end
 
   else # special routing for localized routes via the route_translator gem
@@ -47,6 +50,8 @@ Rails.application.routes.draw do
         member do
           get   :unsubscribe_from_newsletter
           post  :validate_email
+          post  :add_role
+          post  :remove_role
         end
         collection do
           post :search

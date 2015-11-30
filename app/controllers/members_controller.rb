@@ -2,8 +2,9 @@ class MembersController < ApplicationController
 
   before_filter :authenticate,            except: [ :show, :unsubscribe_from_newsletter ]
   before_filter :authenticate_with_admin, except: [ :show, :unsubscribe_from_newsletter ]
+  # TODO change permission system
 
-  before_action :set_member, only: [ :show, :edit, :update, :destroy, :validate_email ]
+  before_action :set_member, only: [ :show, :edit, :update, :destroy, :validate_email, :add_role, :remove_role ]
 
   def index
     @members = Member.by_recent.paginate(:page => params[:page], :per_page => 30)
@@ -25,7 +26,7 @@ class MembersController < ApplicationController
   def create
     @member = Member.new(member_params)
     if @member.save
-      redirect_to @member, notice: t('members.create.notice')
+      redirect_to members_path, notice: t('members.create.notice')
     else
       render action: "new", warning: t('members.create.warning'), layout: 'admin'
     end
@@ -33,7 +34,7 @@ class MembersController < ApplicationController
 
   def update
     if @member.update_attributes(member_params)
-      redirect_to @member, notice: t('members.update.notice')
+      redirect_to members_path, notice: t('members.update.notice')
     else
       render action: "edit", warning: t('members.update.warning'), layout: 'admin'
     end
@@ -66,6 +67,18 @@ class MembersController < ApplicationController
     @member.email_validated = true
     @member.save
     redirect_to members_path, notice: "Successfully validated the #{@member.email} email address."
+  end
+
+  def add_role
+    role = Role.find(params[:role_id])
+    @member.roles << role
+    redirect_to members_path, notice: "The '#{role.name}' role has been added to #{@member.name}"
+  end
+
+  def remove_role
+    role = Role.find(params[:role_id])
+    @member.roles.delete role
+    redirect_to members_path, notice: "The '#{role.name}' role has been removed from #{@member.name}"
   end
 
   private
