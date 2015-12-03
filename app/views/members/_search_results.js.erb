@@ -2,7 +2,11 @@
   <tr>
     <td><%= link_to member.name, member, title: 'view' %></td>
     <td><%= member.email %></td>
-    <td><%= member.role_names.join(', ') %></td>
+    <td>
+      <% member.role_names.each do |name| %>
+        <%="<span class='label label-info'>#{name}</span>".html_safe %>
+      <% end %>
+    </td>
     <td><%= link_to "<span class='glyphicon glyphicon-pencil'></span> ".html_safe + t('edit'), edit_member_path(member), :class => 'btn btn-xs btn-default' %><%= link_to "<span class='glyphicon glyphicon-trash'></span> ".html_safe + t('delete'), member, method: :delete, data: { confirm: t('are_you_sure') }, class: 'btn btn-xs btn-danger' %></td>
   </tr>
 <% end %>
