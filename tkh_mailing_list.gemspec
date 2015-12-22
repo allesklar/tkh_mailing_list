@@ -18,13 +18,14 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency "bundler", "~> 1.3"
+  spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake"
 
   # temporarily, until roadie-rails reaches 1.1
   # a spceial fork needs to be used from the host app:
   # gem 'roadie-rails', git: 'https://github.com/tomasc/roadie-rails'
   spec.add_dependency 'roadie-rails'
+  spec.add_dependency 'tkh_access_control', "~> 0.13"
   spec.add_dependency 'tkh_activity_feeds'
   spec.add_dependency 'carrierwave'
   spec.add_dependency 'rmagick' # needed for carrierwave resizing

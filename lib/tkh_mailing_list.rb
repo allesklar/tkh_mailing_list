@@ -1,5 +1,6 @@
 require "tkh_mailing_list/version"
 require "roadie-rails"
+require "tkh_access_control"
 require "tkh_activity_feeds"
 require "carrierwave"
 require "rmagick"
