@@ -1,8 +1,8 @@
 class MembersController < ApplicationController
 
-  before_filter :authenticate,            except: [ :show, :unsubscribe_from_newsletter ]
-  before_filter :authenticate_with_admin, except: [ :show, :unsubscribe_from_newsletter ]
-  # TODO change permission system
+  before_filter :authenticate,  except: [ :show, :unsubscribe_from_newsletter ]
+  before_action -> { require_permission 'write_members'},
+                                except: [ :show, :unsubscribe_from_newsletter ]
 
   before_action :set_member, only: [ :show, :edit, :update, :destroy, :validate_email, :add_role, :remove_role ]
 
