@@ -25,7 +25,7 @@ Gem::Specification.new do |spec|
   # a spceial fork needs to be used from the host app:
   # gem 'roadie-rails', git: 'https://github.com/tomasc/roadie-rails'
   spec.add_dependency 'roadie-rails'
-  spec.add_dependency 'tkh_access_control', "~> 0.13"
+  spec.add_dependency 'tkh_access_control', "~> 1.0.beta1"
   spec.add_dependency 'tkh_activity_feeds'
   spec.add_dependency 'carrierwave'
   spec.add_dependency 'rmagick' # needed for carrierwave resizing

@@ -9,7 +9,7 @@ Like all tkh gems, it's meant to be used for our projects at Ten Thousand Hours 
 
 Add this line to your application's Gemfile
 
-    gem 'tkh_mailing_list', "~> 0.13"
+    gem 'tkh_mailing_list', "~> 1.0.beta1"
 
 Install
 
