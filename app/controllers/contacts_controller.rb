@@ -1,7 +1,7 @@
 class ContactsController < ApplicationController
 
   before_action :authenticate,                             except: [ :create ]
-  before_action -> { require_permission 'write_contacts'}, except: [ :create ]
+  before_action -> { require_permission_to 'write_contacts'}, except: [ :create ]
 
   def index
     @contacts = Contact.by_recent.paginate(:page => params[:page], :per_page => 35)
