@@ -1,6 +1,6 @@
 <%= render 'header' %>
 
 <%= render 'form' %>
-<%= render 'assign_roles_form' %>
+<%= render 'assign_roles_form' if current_user.is_allowed_to?('write_roles') %>
 
 <%= render 'shared/admin_sidebar' %>

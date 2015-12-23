@@ -3,6 +3,8 @@ class MembersController < ApplicationController
   before_filter :authenticate,  except: [ :show, :unsubscribe_from_newsletter ]
   before_action -> { require_permission 'write_members'},
                                 except: [ :show, :unsubscribe_from_newsletter ]
+  before_action -> { require_permission 'write_roles'},
+                                only: [ :add_role, :remove_role ]
 
   before_action :set_member, only: [ :show, :edit, :update, :destroy, :validate_email, :add_role, :remove_role ]
 
