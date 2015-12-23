@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  # starting with the normal translated routes
+  # starting with the normal routes with translated resources
   unless  Gem::Specification::find_all_by_name('route_translator').any?
 
     scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
@@ -10,7 +10,6 @@ Rails.application.routes.draw do
       # contact forms
       resources :contacts
       # Mailing list records for admin
-      resources :details # deprecated. Should disappear soon.
       # for public viewing and admin editing
       resources :members do
         member do
@@ -44,7 +43,6 @@ Rails.application.routes.draw do
       # contact forms
       resources :contacts
       # Mailing list records for admin
-      resources :details # deprecated. Should disappear soon.
       # for public viewing and admin editing
       resources :members do
         member do
