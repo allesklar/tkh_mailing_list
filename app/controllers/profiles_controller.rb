@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
 
-  before_filter :authenticate
+  before_action :authenticate
 
   before_action :set_profile
 
