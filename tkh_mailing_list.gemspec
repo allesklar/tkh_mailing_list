@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Swami Atma"]
   spec.email         = ["swamiatma@yoga108.org"]
   spec.description   = %q{A mailing list module to work with tkh_authentication gem}
-  spec.summary       = %q{This gem inherits from the tkh_authentication gem and allows administrators to manage user records}
+  spec.summary       = %q{This gem inherits from the tkh_access_control gem and allows administrators to manage user records}
   spec.homepage      = "https://github.com/allesklar/tkh_mailing_list"
   spec.license       = "MIT"
 
