@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "tkh_mailing_list"
   spec.version       = TkhMailingList::VERSION
   spec.authors       = ["Swami Atma"]
-  spec.email         = ["swami@TenThousandHours.eu"]
+  spec.email         = ["swamiatma@yoga108.org"]
   spec.description   = %q{A mailing list module to work with tkh_authentication gem}
   spec.summary       = %q{This gem inherits from the tkh_authentication gem and allows administrators to manage user records}
   spec.homepage      = "https://github.com/allesklar/tkh_mailing_list"
@@ -25,7 +25,7 @@ Gem::Specification.new do |spec|
   # a spceial fork needs to be used from the host app:
   # gem 'roadie-rails', git: 'https://github.com/tomasc/roadie-rails'
   spec.add_dependency 'roadie-rails'
-  spec.add_dependency 'tkh_access_control', "~> 1.0.beta1"
+  spec.add_dependency 'tkh_access_control'
   spec.add_dependency 'tkh_activity_feeds'
   spec.add_dependency 'carrierwave'
   spec.add_dependency 'rmagick' # needed for carrierwave resizing
