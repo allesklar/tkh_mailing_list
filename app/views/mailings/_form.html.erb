@@ -42,8 +42,16 @@
 	    <%= f.input :body_html,
 									:placeholder => 'Here is the actual HTML formatted body text of the email',
 									hint: "try and resist the temptation of 'styling' your pages here. Use semantic HTML markup",
-									input_html: { :rows => 40, :class => 'ckeditor' } %>
-
+									input_html: { class: 'tinymce' } %>
+      <%= tinymce selector: 'input.tinymce',
+                branding: false,
+                # context_menu: "link image imagetools table spellchecker",
+                height: 550,
+                menubar: false, # hiding menu items duplicating icons
+                plugins: "lists link image code fullscreen",
+                toolbar: "formatselect bold italic strikethrough | bullist numlist | alignleft aligncenter alignright alignnone | link unlink image | undo redo selectall code fullscreen"
+    %>
+    
     <%= f.button :submit, class: 'btn btn-primary' %>
 
 <% end %>
